@@ -22,10 +22,11 @@ const Advice = ({ slip, fetchAdvice }: Props) => {
 
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
+
   return (
     <div
       className={`text-center bg-neutralDGB p-10 relative rounded-xl ${
-        width > 800 ? "max-w-xl" : "max-w-md mx-4"
+        width > 800 ? "max-w-xl" : "max-w-md mx-6"
       }`}>
       <p className="text-primaryNG uppercase tracking-advice text-sm mb-10">
         Advice #{slip?.id}
@@ -38,8 +39,12 @@ const Advice = ({ slip, fetchAdvice }: Props) => {
       />
       <button
         onClick={fetchAdvice}
-        className="bg-primaryNG w-14 h-14 mx-auto flex justify-center items-center rounded-full hover:shadow-primary focus:shadow-primary focus:outline-none absolute translate-y-1/4 left-1/2 -translate-x-1/2 active:translate-y-4">
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+        className="bg-primaryNG w-14 h-14 mx-auto flex justify-center items-center rounded-full hover:shadow-primary focus:shadow-primary focus:outline-none absolute translate-y-1/4 left-1/2 -translate-x-1/2 active:translate-y-4 group">
+        <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          className="group-focus:animate-spin">
           <path
             d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
             fill="#202733"
