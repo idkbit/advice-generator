@@ -12,6 +12,12 @@ module.exports = {
       fontSize: {
         qoute: "1.75rem",
       },
+      boxShadow: {
+        primary: "0 0 30px 0 hsl(150, 100%, 66%)",
+      },
+      letterSpacing: {
+        advice: "0.3em",
+      },
     },
   },
   plugins: [],

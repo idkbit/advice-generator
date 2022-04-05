@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Advice from "./components/Advice";
 import { useLocalStorage } from "./hooks";
 
-interface FetchData {
+export interface FetchData {
   slip: {
     advice: string;
     id: number;
@@ -14,17 +15,17 @@ function App() {
     null
   );
 
-  const fetchAdvice = async () => {
+  const fetchAdvice = async (): Promise<FetchData["slip"]> => {
     const res = await fetch("https://api.adviceslip.com/advice");
     const data: FetchData = await res.json();
 
     if (data.slip.id === slip?.id) {
       const slip = await fetchAdvice();
       if (slip) setSlip(slip);
-      return;
+    } else {
+      setSlip(data.slip);
     }
 
-    setSlip(data.slip);
     return data.slip;
   };
 
@@ -35,12 +36,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-neutralDB text-primaryLC min-h-screen">
-      <button onClick={fetchAdvice}>roll advice</button>
-      <div>
-        <p className="text-primaryNG">Advice #{slip?.id}</p>
-        <h1 className="text-xl">{slip?.advice}</h1>
-      </div>
+    <div className="App bg-neutralDB text-primaryLC min-h-screen flex justify-center items-center">
+      <Advice slip={slip} fetchAdvice={fetchAdvice} />
     </div>
   );
 }
